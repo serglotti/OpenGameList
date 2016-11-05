@@ -1,9 +1,13 @@
-﻿import {ModuleWithProviders} from "@angular/core";
+﻿// Step 1/2: To add new routes, you need to import the component here
+import {ModuleWithProviders} from "@angular/core";
 import {Routes, RouterModule} from "@angular/router";
 import {HomeComponent} from "./home.component";
 import {AboutComponent} from "./about.component";
 import {LoginComponent} from "./login.component";
+import {ItemDetailComponent} from "./item-detail.component";
 import {PageNotFoundComponent} from "./page-not-found.component";
+
+// Step 2/2: You then need to add the actual route here (before the "catch all" [**] route)
 const appRoutes: Routes = [
  {
  path: "",
@@ -20,6 +24,10 @@ const appRoutes: Routes = [
 {
  path: "login",
  component: LoginComponent
+ },
+ {
+ path: "item/:id",
+ component: ItemDetailComponent
  },
  {
  path: '**',
