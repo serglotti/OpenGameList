@@ -50,7 +50,7 @@ console.log("ItemListComponent instantiated with the following type: "+this.clas
  }
 onSelect(item: Item) {
  this.selectedItem = item;
- console.log("Item " + this.selectedItem.Id + " has been clicked: loading ItemDetailComponent...");
- this.router.navigate(["item", this.selectedItem.Id]);
+ console.log("Item " + this.selectedItem.Id + " has been clicked: loading item viewer...");
+ this.router.navigate(["item/view", this.selectedItem.Id]);
  }
 }

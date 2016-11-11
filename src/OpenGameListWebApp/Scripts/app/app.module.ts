@@ -7,8 +7,8 @@ import {RouterModule} from "@angular/router";
 import "rxjs/Rx";
 import {AboutComponent} from "./about.component";import {AppComponent} from "./app.component";
 import {HomeComponent} from "./home.component";
-import {ItemDetailComponent} from "./item-detail.component";
-import {ItemListComponent} from "./item-list.component";
+import {ItemDetailEditComponent} from "./item-detail-edit.component";
+import {ItemDetailViewComponent} from "./item-detail-view.component";import {ItemListComponent} from "./item-list.component";
 import {LoginComponent} from "./login.component";
 import {PageNotFoundComponent} from "./page-not-found.component";
 import {AppRouting} from "./app.routing";
@@ -19,7 +19,8 @@ import {ItemService} from "./item.service";
     AboutComponent,
     AppComponent,
     HomeComponent,
-    ItemDetailComponent,
+    ItemDetailEditComponent,
+    ItemDetailViewComponent,
     ItemListComponent,
     LoginComponent,
     PageNotFoundComponent
