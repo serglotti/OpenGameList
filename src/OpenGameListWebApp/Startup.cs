@@ -10,7 +10,9 @@ using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using OpenGameListWebApp.Data;
-
+using Nelibur.ObjectMapper;
+using OpenGameListWebApp.Data.Items;
+using OpenGameListWebApp.ViewModels;
 namespace OpenGameListWebApp
 {
     public class Startup
@@ -68,12 +70,9 @@ namespace OpenGameListWebApp
                 OnPrepareResponse = (context) =>
                 {
                     // Disable caching for all static files.
-                    context.Context.Response.Headers["Cache-Control"] =
-                    Configuration["StaticFiles:Headers:Cache-Control"];
-                    context.Context.Response.Headers["Pragma"] =
-                    Configuration["StaticFiles:Headers:Pragma"];
-                    context.Context.Response.Headers["Expires"] =
-                    Configuration["StaticFiles:Headers:Expires"];
+                    context.Context.Response.Headers["Cache-Control"] = Configuration["StaticFiles:Headers:Cache-Control"];
+                    context.Context.Response.Headers["Pragma"] = Configuration["StaticFiles:Headers:Pragma"];
+                    context.Context.Response.Headers["Expires"] = Configuration["StaticFiles:Headers:Expires"];
                 }
             });
 
@@ -83,6 +82,10 @@ namespace OpenGameListWebApp
 
             // Add MVC to the pipeline
             app.UseMvc();
+
+            // TinyMapper binding configuration 
+            TinyMapper.Bind<Item,
+            ItemViewModel>();
 
             // Seed the Database (if needed)
             try
