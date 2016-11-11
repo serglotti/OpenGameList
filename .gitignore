@@ -240,3 +240,5 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+/src/OpenGameListWebApp/Scripts/app/about.component.js
+/src/OpenGameListWebApp/Scripts/app/home.component.js
