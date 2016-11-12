@@ -1,7 +1,7 @@
-System.register(["@angular/router", "./home.component", "./about.component", "./login.component", "./item-detail-edit.component", "./item-detail-view.component", "./page-not-found.component"], function(exports_1, context_1) {
+System.register(["@angular/router", "./home.component", "./about.component", "./login.component", "./item-detail.component", "./page-not-found.component"], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
-    var router_1, home_component_1, about_component_1, login_component_1, item_detail_edit_component_1, item_detail_view_component_1, page_not_found_component_1;
+    var router_1, home_component_1, about_component_1, login_component_1, item_detail_component_1, page_not_found_component_1;
     var appRoutes, AppRoutingProviders, AppRouting;
     return {
         setters:[
@@ -17,17 +17,14 @@ System.register(["@angular/router", "./home.component", "./about.component", "./
             function (login_component_1_1) {
                 login_component_1 = login_component_1_1;
             },
-            function (item_detail_edit_component_1_1) {
-                item_detail_edit_component_1 = item_detail_edit_component_1_1;
-            },
-            function (item_detail_view_component_1_1) {
-                item_detail_view_component_1 = item_detail_view_component_1_1;
+            function (item_detail_component_1_1) {
+                item_detail_component_1 = item_detail_component_1_1;
             },
             function (page_not_found_component_1_1) {
                 page_not_found_component_1 = page_not_found_component_1_1;
             }],
         execute: function() {
-            // step 2/2: You then need to add the actual route here (before the "catch all" [**] route)
+            // Step 2/2: You then need to add the actual route here (before the "catch all" [**] route)
             appRoutes = [
                 {
                     path: "",
@@ -46,15 +43,11 @@ System.register(["@angular/router", "./home.component", "./about.component", "./
                     component: login_component_1.LoginComponent
                 },
                 {
-                    path: "item/edit/:id",
-                    component: item_detail_edit_component_1.ItemDetailEditComponent
+                    path: "item/:id",
+                    component: item_detail_component_1.ItemDetailComponent
                 },
                 {
-                    path: "item/view/:id",
-                    component: item_detail_view_component_1.ItemDetailViewComponent
-                },
-                {
-                    path: "**",
+                    path: '**',
                     component: page_not_found_component_1.PageNotFoundComponent
                 }
             ];
