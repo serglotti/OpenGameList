@@ -6,7 +6,7 @@ using OpenGameListWebApp.Data.Users;
 using OpenGameListWebApp.Data.Comments;
 namespace OpenGameListWebApp.Data
 {
-  public class ApplicationDbContext : DbContext
+  public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
   {
     #region Constructor
     public ApplicationDbContext(DbContextOptions options) :
@@ -36,7 +36,7 @@ namespace OpenGameListWebApp.Data
     #region Properties
     public DbSet<Item> Items { get; set; }
     public DbSet<Comment> Comments { get; set; }
-    public DbSet<ApplicationUser> Users { get; set; }
+    //public DbSet<ApplicationUser> Users { get; set; }
     #endregion Properties
   }
 }
