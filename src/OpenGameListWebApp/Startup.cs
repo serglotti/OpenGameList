@@ -14,6 +14,8 @@ using Nelibur.ObjectMapper;
 using OpenGameListWebApp.Data.Items;
 using OpenGameListWebApp.ViewModels;using OpenGameListWebApp.Data.Users;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using OpenGameListWebApp.Classes;
+using Microsoft.IdentityModel.Tokens;
 
 namespace OpenGameListWebApp
 {
@@ -87,12 +89,31 @@ namespace OpenGameListWebApp
                 }
             });
 
-            // app.UseApplicationInsightsRequestTelemetry();
+            // Add a custom Jwt Provider to generate Tokens
+            app.UseJwtProvider();
 
-            // app.UseApplicationInsightsExceptionTelemetry();
+            // Add the Jwt Bearer Header Authentication to validate Tokens
+            app.UseJwtBearerAuthentication(new JwtBearerOptions()
+            {
+              AutomaticAuthenticate = true,
+              AutomaticChallenge = true,
+              RequireHttpsMetadata = false,
+              TokenValidationParameters = new TokenValidationParameters()
+              {
+                IssuerSigningKey = JwtProvider.SecurityKey,
+                ValidateIssuerSigningKey = true,
+                ValidIssuer = JwtProvider.Issuer,
+                ValidateIssuer = false,
+                ValidateAudience = false
+              }
+            });
 
-            // Add MVC to the pipeline
-            app.UseMvc();
+      // app.UseApplicationInsightsRequestTelemetry();
+
+      // app.UseApplicationInsightsExceptionTelemetry();
+
+      // Add MVC to the pipeline
+      app.UseMvc();
 
             // TinyMapper binding configuration 
             TinyMapper.Bind<Item,
